@@ -1,0 +1,14 @@
+package Project;
+import java.sql.*;
+
+public class ConnectionProvider {
+     
+    public static Connection getCon()
+    {
+      try{
+          for className("")
+      }catch(){
+          
+      }
+    }
+}
