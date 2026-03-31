@@ -49,20 +49,34 @@ function carousel() {
 
 <body>
   <br>
- 
+  <%
+      String msg = request.getParameter("msg");
+      if("valid".equals(msg))
+      {
+  %>
+<center><font color="green" size="5">Form Submitted Successfully.You will get notified within 24 hours.</font></center>
+  <%      
+      }
+  %>
+
+  <%
+      if("invalid".equals(msg))
+      {
+  %>
+    <center><font color="red" size="5">Invalid Data! Try Again.</font></center>
+  <%      
+      }
+  %>
 <center><h1>Enter Your Details Request for Blood</h1></center>
 <form action="indexFormAction.jsp" method="post">
     <center>
-        <input type="text" name="text" name="name" placeholder="Enter Name" required>
-        <input type="text" name="mobilenumber" placeholder="Enter Mobile Number" required>
-        <input type="mail" name="email" placeholder="Enter Email Address" required>
-        <input type="text" name="text" name="bloodgroup" placeholder="Enter Blood Group" required>
+        <input type="text" name="name" placeholder="Enter Name" required />
+        <input type="text" name="mobilenumber" placeholder="Enter Mobile Number" required />
+        <input type="mail" name="email" placeholder="Enter Email Address" required />
+        <input type="text" name="bloodgroup" placeholder="Enter Blood Group" required />
         <button class="button1"><span>submit</span></button>
     </center>
 </form>
- 
- 
- 
  
   <br>
   <br>

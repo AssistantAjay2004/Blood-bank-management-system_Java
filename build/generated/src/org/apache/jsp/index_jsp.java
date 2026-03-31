@@ -92,14 +92,40 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("<body>\r\n");
       out.write("  <br>\r\n");
-      out.write(" \r\n");
+      out.write("  ");
+
+      String msg = request.getParameter("msg");
+      if("valid".equals(msg))
+      {
+  
+      out.write("\r\n");
+      out.write("<center><font color=\"green\" size=\"5\">Form Submitted Successfully.You will get notified within 24 hours.</font></center>\r\n");
+      out.write("  ");
+      
+      }
+  
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("  ");
+
+      if("invalid".equals(msg))
+      {
+  
+      out.write("\r\n");
+      out.write("    <center><font color=\"red\" size=\"5\">Invalid Data! Try Again.</font></center>\r\n");
+      out.write("  ");
+      
+      }
+  
+      out.write("\r\n");
       out.write("<center><h1>Enter Your Details Request for Blood</h1></center>\r\n");
       out.write("<form action=\"indexFormAction.jsp\" method=\"post\">\r\n");
       out.write("    <center>\r\n");
-      out.write("        <input type=\"text\" name=\"text\" name=\"name\" placeholder=\"Enter Name\" required>\r\n");
-      out.write("        <input type=\"text\" name=\"mobilenumber\" placeholder=\"Enter Mobile Number\" required>\r\n");
-      out.write("        <input type=\"mail\" name=\"email\" placeholder=\"Enter Email Address\" required>\r\n");
-      out.write("        <input type=\"text\" name=\"text\" name=\"bloodgroup\" placeholder=\"Enter Blood Group\" required>\r\n");
+      out.write("        <input type=\"text\" name=\"name\" placeholder=\"Enter Name\" required />\r\n");
+      out.write("        <input type=\"text\" name=\"mobilenumber\" placeholder=\"Enter Mobile Number\" required />\r\n");
+      out.write("        <input type=\"mail\" name=\"email\" placeholder=\"Enter Email Address\" required />\r\n");
+      out.write("        <input type=\"text\" name=\"bloodgroup\" placeholder=\"Enter Blood Group\" required />\r\n");
       out.write("        <button class=\"button1\"><span>submit</span></button>\r\n");
       out.write("    </center>\r\n");
       out.write("</form>\r\n");
