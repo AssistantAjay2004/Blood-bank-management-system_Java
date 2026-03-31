@@ -106,7 +106,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
   
       out.write("\r\n");
       out.write("\r\n");
-      out.write("\r\n");
       out.write("  ");
 
       if("invalid".equals(msg))
@@ -129,9 +128,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <button class=\"button1\"><span>submit</span></button>\r\n");
       out.write("    </center>\r\n");
       out.write("</form>\r\n");
-      out.write(" \r\n");
-      out.write(" \r\n");
-      out.write(" \r\n");
       out.write(" \r\n");
       out.write("  <br>\r\n");
       out.write("  <br>\r\n");

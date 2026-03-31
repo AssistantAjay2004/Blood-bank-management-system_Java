@@ -27,7 +27,25 @@ input[type="text"], input[type="password"], input[type="submit"]
 <body>
 <div class="container">
 <br>
-	<br>
+<br>
+ <%
+ String msg = request.getParameter("msg");
+ if("invalid".equals(msg))
+ {
+  %>
+  <center><font color="red" size="3">Welcome to home page.</font></center>
+  <%          
+ } 
+ %>
+  <form action="adminlLoginAction.jsp" method="post">
+   <div class="form-group">
+       <center><h2>Username</h2></center>
+       <input type="text" placeholder="Enter Username" name="username" required >
+       <center><h2>Password</h2></center>
+       <input type="password" placeholder="Enter Password" name="password" required >
+       <center><button type="submit" class="button">Submit</button></center>
+
+  </form>
 
 	
 	
@@ -38,6 +56,6 @@ input[type="text"], input[type="password"], input[type="submit"]
 <br>
 <br>
 <br>
-<h3><center>All Right Reserved @ BTech Days :: 2020  </center></h3>
+<h3><center>All Right Reserved @ BSC-IT Days :: 2022  </center></h3>
 </body>
 </html>
