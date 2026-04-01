@@ -32,6 +32,6 @@ function carousel() {
 }
 </script>
 <br>
-<h3><center>All Right Reserved @ BTech Days :: 2020  </center></h3>
+<h3><center>All Right Reserved @ BSC-IT Days :: 2022  </center></h3>
 </body>
 </html>
