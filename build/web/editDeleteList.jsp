@@ -1,4 +1,6 @@
-<%@include file="header.html"%>
+<%@page import="Project.ConnectionProvider" %>
+<%@page import="java.sql.*" %>
+<%@include file="header.html" %>
 <html>
 <head>
 <style>
@@ -28,18 +30,75 @@
 </head>
 <body>
 <br>
+<%
+ String msg = request.getParameter("msg");
+ if("invalid".equals(msg))
+ {
+%>
+<center><font color="red" size="5">Something went wrong! Try Again!</font></center>
+<%
+ }
+%>
 
-
-
-
-
-
+<%
+ if("updated".equals(msg))
+ {
+%>
+<center><font color="red" size="5">Successfully Updated!</font></center>
+<%
+ }
+%>
+<center>
+<table id="customers">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Father Name</th>
+        <th>Mother Name</th>
+        <th>Mobile Number</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Blood Group</th>
+        <th>Address</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    
+    <tr>  
+    <%
+    try
+    {
+        Connection con=ConnectionProvider.getCon();
+        Statement st=con.createStatement();
+        ResultSet rs=st.executeQuery("select * from donor");
+        while(rs.next()){
+          
+    %>
+    <td><%=rs.getInt(1) %></td>
+    <td><%=rs.getString(2) %></td>
+    <td><%=rs.getString(3) %></td>
+    <td><%=rs.getString(4) %></td>
+    <td><%=rs.getString(5) %></td>
+    <td><%=rs.getString(6) %></td>
+    <td><%=rs.getString(7) %></td>
+    <td><%=rs.getString(8) %></td>
+    <td><%=rs.getString(9) %></td>
+    <td><a href="updateDonor.jsp?id=<%=rs.getString(1)%>">Edit</a></td>
+    <td><a href="deleteDonor.jsp?id=<%=rs.getString(1)%>">Delete</a></td>
+</tr>
+<%
+}
+}
+catch(Exception e){
+  System.out.println(e);
+}
+%>
 </table>
 </center>
 <br>
 <br>
 <br>
 <br>
-<h3><center>All Right Reserved @ BTech Days :: 2020  </center></h3>
+<h3><center>All Right Reserved @ BSC-IT Days :: 2022  </center></h3>
 </body>
 </html>

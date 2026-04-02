@@ -241,7 +241,7 @@ try {
       out.write("</div>\r\n");
       out.write("\r\n");
       out.write("<br><br><br><br>\r\n");
-      out.write("<h3><center>All Right Reserved @ BTech Days :: 2020</center></h3>\r\n");
+      out.write("<h3><center>All Right Reserved @ BSC-IT  Days :: 2022</center></h3>\r\n");
       out.write("\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
