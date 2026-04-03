@@ -6,7 +6,7 @@ import javax.servlet.jsp.*;
 import Project.ConnectionProvider;
 import java.sql.*;
 
-public final class editDeleteList_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class updateDonor_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -105,135 +105,101 @@ public final class editDeleteList_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("</body>\r\n");
       out.write("</html>\r\n");
       out.write("\r\n");
+      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
       out.write("<html>\r\n");
       out.write("<head>\r\n");
+      out.write(" <link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\" media=\"screen\">\r\n");
       out.write("<style>\r\n");
-      out.write("#customers {\r\n");
-      out.write("  font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\r\n");
-      out.write("  border-collapse: collapse;\r\n");
-      out.write("  width: 95%;\r\n");
+      out.write("input[type=\"text\"], input[type=\"password\"], input[type=\"email\"], select,input[type=\"number\"]\r\n");
+      out.write("{\r\n");
+      out.write("    border: none;\r\n");
+      out.write("    background:silver;\r\n");
+      out.write("    height: 50px;\r\n");
+      out.write("    font-size: 16px;\r\n");
+      out.write("\tpadding:15px;\r\n");
+      out.write("\twidth:60%;\t\r\n");
+      out.write("\tborder-radius: 25px;\r\n");
+      out.write("\tmargin-left:20%;\r\n");
       out.write("}\r\n");
-      out.write("\r\n");
-      out.write("#customers td, #customers th {\r\n");
-      out.write("  border: 1px solid #ddd;\r\n");
-      out.write("  padding: 8px;\r\n");
+      out.write("h2,h1\r\n");
+      out.write("{\t\r\n");
+      out.write("\tmargin-left:20%;\r\n");
       out.write("}\r\n");
-      out.write("\r\n");
-      out.write("#customers tr:nth-child(even){background-color: #f2f2f2;}\r\n");
-      out.write("\r\n");
-      out.write("#customers tr:hover {background-color: #ddd;}\r\n");
-      out.write("\r\n");
-      out.write("#customers th {\r\n");
-      out.write("  padding-top: 12px;\r\n");
-      out.write("  padding-bottom: 12px;\r\n");
-      out.write("  text-align: left;\r\n");
-      out.write("  background-color: #4CAF50;\r\n");
-      out.write("  color: white;\r\n");
+      out.write("hr\r\n");
+      out.write("{\r\n");
+      out.write("width:60%;\t\r\n");
       out.write("}\r\n");
       out.write("</style>\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
-      out.write("<br>\r\n");
 
- String msg = request.getParameter("msg");
- if("invalid".equals(msg))
+ String id=request.getParameter("id");
+ try
  {
+   Connection con=ConnectionProvider.getCon();
+   Statement st=con.createStatement();
+   ResultSet rs=st.executeQuery("select * from donor where id='"+id+"'");
+   while(rs.next()){
+       
 
       out.write("\r\n");
-      out.write("<center><font color=\"red\" size=\"5\">Something went wrong! Try Again!</font></center>\r\n");
-
- }
-
+      out.write("<div class=\"container\">\r\n");
+      out.write("    <form action=\"updateDonorAction.jsp\" method=\"post\">\r\n");
+      out.write("    <input type=\"hidden\" name=\"id\" value=\"");
+out.println(id);
+      out.write("\">\r\n");
+      out.write("      <h2>Name</h2>\r\n");
+      out.write("      <input type=\"text\" value=\"");
+      out.print(rs.getString(2));
+      out.write("\" name=\"name\">\r\n");
+      out.write("      <hr>\r\n");
+      out.write("      <h2>Father Name</h2>\r\n");
+      out.write("      <input type=\"text\" value=\"");
+      out.print(rs.getString(3));
+      out.write("\" name=\"father\">\r\n");
+      out.write("      <hr>\r\n");
+      out.write("      <h2>Mother Name</h2>\r\n");
+      out.write("      <input type=\"text\" value=\"");
+      out.print(rs.getString(4));
+      out.write("\" name=\"mother\" >\r\n");
+      out.write("      <hr>\r\n");
+      out.write("      <h2>Mobile Number</h2>\r\n");
+      out.write("      <input type=\"number\" value=\"");
+      out.print(rs.getString(5));
+      out.write("\" name=\"mobilenumber\" >\r\n");
+      out.write("      <hr>\r\n");
+      out.write("      <h2>Email</h2>\r\n");
+      out.write("      <input type=\"email\" value=\"");
+      out.print(rs.getString(7));
+      out.write("\" name=\"email\" >\r\n");
+      out.write("      <hr>\r\n");
+      out.write("      <h2>Address</h2>\r\n");
+      out.write("      <input type=\"text\" value=\"");
+      out.print(rs.getString(9));
+      out.write("\" name=\"address\" >\r\n");
+      out.write("      <br>\r\n");
+      out.write("      <center><button type=\"submit\" class=\"button\">Save</button></center>\r\n");
+      out.write("    </form>\r\n");
+      out.write("</div>\r\n");
+      out.write("  ");
+ 
+   }
+   }
+  catch(Exception e){
+    System.out.println(e);
+  }
+  
       out.write("\r\n");
       out.write("\r\n");
-
- if("valid".equals(msg))
- {
-
       out.write("\r\n");
-      out.write("<center><font color=\"red\" size=\"5\">Successfully Updated!</font></center>\r\n");
-
- }
-
       out.write("\r\n");
-      out.write("<center>\r\n");
-      out.write("<table id=\"customers\">\r\n");
-      out.write("    <tr>\r\n");
-      out.write("        <th>ID</th>\r\n");
-      out.write("        <th>Name</th>\r\n");
-      out.write("        <th>Father Name</th>\r\n");
-      out.write("        <th>Mother Name</th>\r\n");
-      out.write("        <th>Mobile Number</th>\r\n");
-      out.write("        <th>Gender</th>\r\n");
-      out.write("        <th>Email</th>\r\n");
-      out.write("        <th>Blood Group</th>\r\n");
-      out.write("        <th>Address</th>\r\n");
-      out.write("        <th>Edit</th>\r\n");
-      out.write("        <th>Delete</th>\r\n");
-      out.write("    </tr>\r\n");
-      out.write("    \r\n");
-      out.write("    ");
-
-    try
-    {
-        Connection con=ConnectionProvider.getCon();
-        Statement st=con.createStatement();
-        ResultSet rs=st.executeQuery("select * from donor");
-        while(rs.next()){
-          
-    
       out.write("\r\n");
-      out.write("    \r\n");
-      out.write(" <tr>  \r\n");
-      out.write("    <td>");
-      out.print(rs.getInt(1) );
-      out.write("</td>\r\n");
-      out.write("    <td>");
-      out.print(rs.getString(2) );
-      out.write("</td>\r\n");
-      out.write("    <td>");
-      out.print(rs.getString(3) );
-      out.write("</td>\r\n");
-      out.write("    <td>");
-      out.print(rs.getString(4) );
-      out.write("</td>\r\n");
-      out.write("    <td>");
-      out.print(rs.getString(5) );
-      out.write("</td>\r\n");
-      out.write("    <td>");
-      out.print(rs.getString(6) );
-      out.write("</td>\r\n");
-      out.write("    <td>");
-      out.print(rs.getString(7) );
-      out.write("</td>\r\n");
-      out.write("    <td>");
-      out.print(rs.getString(8) );
-      out.write("</td>\r\n");
-      out.write("    <td>");
-      out.print(rs.getString(9) );
-      out.write("</td>\r\n");
-      out.write("    <td><a href=\"updateDonor.jsp?id=");
-      out.print(rs.getString(1));
-      out.write("\">Edit</a></td>\r\n");
-      out.write("    <td><a href=\"deleteDonor.jsp?id=");
-      out.print(rs.getString(1));
-      out.write("\">Delete</a></td>\r\n");
-      out.write("</tr>\r\n");
-
-}
-}
-catch(Exception e){
-  System.out.println(e);
-}
-
-      out.write("\r\n");
-      out.write("</table>\r\n");
-      out.write("</center>\r\n");
       out.write("<br>\r\n");
       out.write("<br>\r\n");
       out.write("<br>\r\n");
       out.write("<br>\r\n");
       out.write("<h3><center>All Right Reserved @ BSC-IT Days :: 2022  </center></h3>\r\n");
+      out.write("\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {

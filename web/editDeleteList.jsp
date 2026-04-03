@@ -30,8 +30,18 @@
 </head>
 <body>
 <br>
+
 <%
  String msg = request.getParameter("msg");
+ if("valid".equals(msg))
+ {
+%>
+<center><font color="red" size="5">Successfully Updated!</font></center>
+<%
+ }
+%>
+
+<%
  if("invalid".equals(msg))
  {
 %>
@@ -41,10 +51,11 @@
 %>
 
 <%
- if("updated".equals(msg))
+if("deleted".equals(msg))
  {
 %>
-<center><font color="red" size="5">Successfully Updated!</font></center>
+
+<center><font color="red" size="5">Successfully Deleted!</font></center>
 <%
  }
 %>
@@ -64,7 +75,6 @@
         <th>Delete</th>
     </tr>
     
-    <tr>  
     <%
     try
     {
@@ -74,6 +84,8 @@
         while(rs.next()){
           
     %>
+    
+ <tr>  
     <td><%=rs.getInt(1) %></td>
     <td><%=rs.getString(2) %></td>
     <td><%=rs.getString(3) %></td>

@@ -1,3 +1,5 @@
+<%@page import="Project.ConnectionProvider" %>
+<%@page import="java.sql.*" %>
 <%@include file="header.html"%>
 <html>
 <head>
@@ -40,9 +42,76 @@ input[type="text"], input[type="password"], input[type="submit"],select
 </style>
 </head>
 <body>
-
-
+ <div class="container">
+ <br>
+ <%
+   String msg=request.getParameter("msg");
+   if("invalid".equals(msg))
+     {
+ %>
+ <center><font color="red" size="5">Something went wrong! Try Again!</font></center>
+ <%
+     }    
+ %>
  
+  <%
+  
+   if("valid".equals(msg))
+     {
+ %>
+ <center><font color="red" size="5">Successfully Updated!</font></center>
+ <%
+     }    
+ %>
+ <form action="manageStockAction.jsp" method="post">
+  <div class="form-group">  
+   <center><h2>Select Blood Group</h2></center>
+    <select nam="bloodgroup">
+      <option value="A+">A+</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B-">B-</option>
+      <option value="O+">O+</option>
+      <option value="O-">O-</option>
+      <option value="AB+">AB+</option>
+      <option value="AB-">AB-</option>
+    </select>
+   
+    <center><h2>Select Increase/Decrease</h2></center>
+    <select nam="incdec">
+      <option value="inc">Increase</option>
+      <option value="dec">Decrease</option>
+    </select>
+    
+    <center><h2>Units</h2></center>
+    <input type="text" placeholder="Enter Units">
+    <center><button type="submit" class="button">Save</button></center>
+  </div>
+ </form>
+ <br>
+ <center>
+<table id="customers">
+    <tr>
+       <th>Blood Group</th>
+       <th>Units</th>
+    </tr>
+    <tr>
+    <% 
+        try{
+            
+        
+        Connection con=ConnectionProvider.getCon();
+        Statement st=con.createStatement();
+        ResultSet rs=st.executeQuery("select * from stock");
+        while(rs.next())
+        {
+    %>
+    <td><%=rs.getString(1)%></td>
+    <td><%=rs.getString(2)%></td>
+    </tr>
+    <%
+        
+    %>
 </table>
 </center>
 <br>
