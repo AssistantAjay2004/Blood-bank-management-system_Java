@@ -63,10 +63,10 @@ input[type="text"], input[type="password"], input[type="submit"],select
  <%
      }    
  %>
- <form action="manageStockAction.jsp" method="post">
+<form action="manageStockAction.jsp" method="post">
   <div class="form-group">  
    <center><h2>Select Blood Group</h2></center>
-    <select nam="bloodgroup">
+    <select name="bloodgroup">
       <option value="A+">A+</option>
       <option value="A-">A-</option>
       <option value="B+">B+</option>
@@ -78,16 +78,17 @@ input[type="text"], input[type="password"], input[type="submit"],select
     </select>
    
     <center><h2>Select Increase/Decrease</h2></center>
-    <select nam="incdec">
+    <select name="incdec">
       <option value="inc">Increase</option>
       <option value="dec">Decrease</option>
     </select>
     
     <center><h2>Units</h2></center>
-    <input type="text" placeholder="Enter Units">
+    <input type="text" name="units" placeholder="Enter Units">
+    
     <center><button type="submit" class="button">Save</button></center>
   </div>
- </form>
+</form>
  <br>
  <center>
 <table id="customers">
@@ -110,7 +111,12 @@ input[type="text"], input[type="password"], input[type="submit"],select
     <td><%=rs.getString(2)%></td>
     </tr>
     <%
-        
+     }
+     }
+   catch(Exception e)
+   {
+      System.out.println(e);
+   }
     %>
 </table>
 </center>
@@ -118,6 +124,6 @@ input[type="text"], input[type="password"], input[type="submit"],select
 <br>
 <br>
 <br>
-<h3><center>All Right Reserved @ BTech Days :: 2020  </center></h3>
+<h3><center>All Right Reserved @ BSC-IT Days :: 2022  </center></h3>
 </body>
 </html>

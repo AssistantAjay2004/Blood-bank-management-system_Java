@@ -1,3 +1,5 @@
+<%@page import="Project.ConnectionProvider" %>
+<%@page import="java.sql.*" %>
 <%@include file="header.html"%>
 <html>
 <head>
@@ -29,7 +31,11 @@
 <body>
 <br>
 <center>
-
+<table id="customers">
+    <tr>
+        <th>Name</th>
+    </tr>        
+</table>
 
 
 
