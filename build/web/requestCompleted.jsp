@@ -34,17 +34,40 @@
 <table id="customers">
     <tr>
         <th>Name</th>
-    </tr>        
+        <th>Mobile Number</th>
+        <th>Email</th>
+        <th>Blood Group</th>
+    </tr> 
+    <tr>
+      <%
+     try
+     {
+         Connection con=ConnectionProvider.getCon();
+         Statement st=con.createStatement();
+         ResultSet rs=st.executeQuery("select * from bloodrequest where status='completed'");
+         while(rs.next())
+         {
+     %>
+     <td><%=rs.getString(1) %></td>
+     <td><%=rs.getString(2) %></td>
+     <td><%=rs.getString(3) %></td>
+     <td><%=rs.getString(4) %></td>
+    </tr>
+     <%
+     }
+     }
+catch(Exception e)
+{
+     System.out.println(e);
+}
+     %>
 </table>
-
-
-
 
 </center>
 <br>
 <br>
 <br>
 <br>
-<h3><center>All Right Reserved @ BTech Days :: 2020  </center></h3>
+<h3><center>All Right Reserved @ BSC-IT Days :: 2022  </center></h3>
 </body>
 </html>
